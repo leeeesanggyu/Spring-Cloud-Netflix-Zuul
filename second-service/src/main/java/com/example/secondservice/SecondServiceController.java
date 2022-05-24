@@ -21,4 +21,9 @@ public class SecondServiceController {
         log.info("reqHeader : {}", reqHeader);
         return "Welcome to the Second service.";
     }
+
+    @GetMapping("/check")
+    public String check() {
+        return "spring cloud gateway filter second service check";
+    }
 }

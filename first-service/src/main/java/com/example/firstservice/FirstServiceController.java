@@ -31,4 +31,9 @@ public class FirstServiceController {
         return "Welcome to the First service.";
     }
 
+    @GetMapping("/check")
+    public String check() {
+        return "spring cloud gateway filter first service check";
+    }
+
 }
