@@ -25,4 +25,10 @@ public class FirstServiceController {
         return "Welcome to the First service.";
     }
 
+    @GetMapping("/message")
+    public String message(@RequestHeader("first-request") String reqHeader) {
+        log.info("reqHeader : {}", reqHeader);
+        return "Welcome to the First service.";
+    }
+
 }

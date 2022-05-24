@@ -15,4 +15,10 @@ public class SecondServiceController {
     public String welcome() {
         return "Welcome to the Second service.";
     }
+
+    @GetMapping("/message")
+    public String message(@RequestHeader("second-request") String reqHeader) {
+        log.info("reqHeader : {}", reqHeader);
+        return "Welcome to the Second service.";
+    }
 }
