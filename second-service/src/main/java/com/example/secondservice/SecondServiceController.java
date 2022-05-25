@@ -24,6 +24,7 @@ public class SecondServiceController {
 
     @GetMapping("/check")
     public String check() {
+        log.info("check");
         return "spring cloud gateway filter second service check";
     }
 }

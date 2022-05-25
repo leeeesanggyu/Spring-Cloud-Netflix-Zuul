@@ -1,5 +1,6 @@
 package com.example.firstservice;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,6 +21,13 @@ import java.util.Enumeration;
 @Slf4j
 public class FirstServiceController {
 
+    Environment env;
+
+    @Autowired
+    public FirstServiceController(Environment env) {
+        this.env = env;
+    }
+
     @GetMapping("/welcome")
     public String welcome() {
         return "Welcome to the First service.";
@@ -32,8 +40,9 @@ public class FirstServiceController {
     }
 
     @GetMapping("/check")
-    public String check() {
-        return "spring cloud gateway filter first service check";
+    public String check(HttpServletRequest req) {
+        log.info("server port = {}", req.getServerPort());
+        return String.format("spring cloud gateway filter first service check, port : %s", env.getProperty("local.server.port"));
     }
 
 }
